@@ -1,6 +1,4 @@
 ﻿using MediatR;
-using OnionCarBook.Application.Features.CQRS.Results.AboutResults;
-using OnionCarBook.Application.Features.CQRS.Results.BrandResults;
 using OnionCarBook.Application.Features.Mediator.Queries.FeatureQueries;
 using OnionCarBook.Application.Features.Mediator.Results.FeatureResults;
 using OnionCarBook.Application.Interfaces;

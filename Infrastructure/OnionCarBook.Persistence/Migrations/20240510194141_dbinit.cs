@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace OnionCarBook.Persistence.Migrations
 {
     /// <inheritdoc />
-    public partial class mig_first : Migration
+    public partial class dbinit : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -24,6 +24,21 @@ namespace OnionCarBook.Persistence.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Abouts", x => x.AboutID);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Authors",
+                columns: table => new
+                {
+                    AuthorID = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    ImageUrl = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Description = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Authors", x => x.AuthorID);
                 });
 
             migrationBuilder.CreateTable(
@@ -214,6 +229,35 @@ namespace OnionCarBook.Persistence.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Blogs",
+                columns: table => new
+                {
+                    BlogID = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Title = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    CoverImageUrl = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    AuthorID = table.Column<int>(type: "int", nullable: false),
+                    CategoryID = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Blogs", x => x.BlogID);
+                    table.ForeignKey(
+                        name: "FK_Blogs_Authors_AuthorID",
+                        column: x => x.AuthorID,
+                        principalTable: "Authors",
+                        principalColumn: "AuthorID",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Blogs_Categories_CategoryID",
+                        column: x => x.CategoryID,
+                        principalTable: "Categories",
+                        principalColumn: "CategoryID",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "CarDescriptions",
                 columns: table => new
                 {
@@ -288,6 +332,16 @@ namespace OnionCarBook.Persistence.Migrations
                 });
 
             migrationBuilder.CreateIndex(
+                name: "IX_Blogs_AuthorID",
+                table: "Blogs",
+                column: "AuthorID");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Blogs_CategoryID",
+                table: "Blogs",
+                column: "CategoryID");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_CarDescriptions_CarID",
                 table: "CarDescriptions",
                 column: "CarID");
@@ -328,6 +382,9 @@ namespace OnionCarBook.Persistence.Migrations
                 name: "Banners");
 
             migrationBuilder.DropTable(
+                name: "Blogs");
+
+            migrationBuilder.DropTable(
                 name: "CarDescriptions");
 
             migrationBuilder.DropTable(
@@ -335,9 +392,6 @@ namespace OnionCarBook.Persistence.Migrations
 
             migrationBuilder.DropTable(
                 name: "CarPricings");
-
-            migrationBuilder.DropTable(
-                name: "Categories");
 
             migrationBuilder.DropTable(
                 name: "Contacts");
@@ -356,6 +410,12 @@ namespace OnionCarBook.Persistence.Migrations
 
             migrationBuilder.DropTable(
                 name: "Testimonials");
+
+            migrationBuilder.DropTable(
+                name: "Authors");
+
+            migrationBuilder.DropTable(
+                name: "Categories");
 
             migrationBuilder.DropTable(
                 name: "Features");

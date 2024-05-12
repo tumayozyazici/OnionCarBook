@@ -5,17 +5,23 @@ VisualStudioVersion = 17.9.34728.123
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{31301FE8-9451-460C-A3ED-6A4B4FCA448B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnionCarBook.Domain", "Core\OnionCarBook.Domain\OnionCarBook.Domain.csproj", "{90857415-74FA-4E7D-8F2C-26870702A27D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OnionCarBook.Domain", "Core\OnionCarBook.Domain\OnionCarBook.Domain.csproj", "{90857415-74FA-4E7D-8F2C-26870702A27D}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{C2602FC5-B9E0-4F97-9A99-49E9DB712FCD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnionCarBook.Persistence", "Infrastructure\OnionCarBook.Persistence\OnionCarBook.Persistence.csproj", "{886092F0-4A39-4D12-A0EF-9AB293A2F70B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OnionCarBook.Persistence", "Infrastructure\OnionCarBook.Persistence\OnionCarBook.Persistence.csproj", "{886092F0-4A39-4D12-A0EF-9AB293A2F70B}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentation", "{9C343C57-0AB2-48E4-883B-E26282EE066D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnionCarBook.WebApi", "Presentation\OnionCarBook.WebApi\OnionCarBook.WebApi.csproj", "{7703344E-31C1-4762-B7D3-97CCCEB2A84F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OnionCarBook.WebApi", "Presentation\OnionCarBook.WebApi\OnionCarBook.WebApi.csproj", "{7703344E-31C1-4762-B7D3-97CCCEB2A84F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnionCarBook.Application", "Core\OnionCarBook.Application\OnionCarBook.Application.csproj", "{14F6B066-729B-47D0-83AD-32A3D44FC754}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OnionCarBook.Application", "Core\OnionCarBook.Application\OnionCarBook.Application.csproj", "{14F6B066-729B-47D0-83AD-32A3D44FC754}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Frontends", "Frontends", "{3AD32396-F574-4E68-94DE-1B71C40E0F47}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OnionCarBook.WebUI", "Frontends\OnionCarBook.WebUI\OnionCarBook.WebUI.csproj", "{528BCEB8-5FAA-4F85-811A-7D24FF538B3E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnionCarBook.Dto", "Frontends\OnionCarBook.Dto\OnionCarBook.Dto.csproj", "{6DCD1683-A9B5-48A6-9D89-2898AB5B7E5C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +45,14 @@ Global
 		{14F6B066-729B-47D0-83AD-32A3D44FC754}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{14F6B066-729B-47D0-83AD-32A3D44FC754}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{14F6B066-729B-47D0-83AD-32A3D44FC754}.Release|Any CPU.Build.0 = Release|Any CPU
+		{528BCEB8-5FAA-4F85-811A-7D24FF538B3E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{528BCEB8-5FAA-4F85-811A-7D24FF538B3E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{528BCEB8-5FAA-4F85-811A-7D24FF538B3E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{528BCEB8-5FAA-4F85-811A-7D24FF538B3E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6DCD1683-A9B5-48A6-9D89-2898AB5B7E5C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6DCD1683-A9B5-48A6-9D89-2898AB5B7E5C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6DCD1683-A9B5-48A6-9D89-2898AB5B7E5C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6DCD1683-A9B5-48A6-9D89-2898AB5B7E5C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -48,6 +62,8 @@ Global
 		{886092F0-4A39-4D12-A0EF-9AB293A2F70B} = {C2602FC5-B9E0-4F97-9A99-49E9DB712FCD}
 		{7703344E-31C1-4762-B7D3-97CCCEB2A84F} = {9C343C57-0AB2-48E4-883B-E26282EE066D}
 		{14F6B066-729B-47D0-83AD-32A3D44FC754} = {31301FE8-9451-460C-A3ED-6A4B4FCA448B}
+		{528BCEB8-5FAA-4F85-811A-7D24FF538B3E} = {3AD32396-F574-4E68-94DE-1B71C40E0F47}
+		{6DCD1683-A9B5-48A6-9D89-2898AB5B7E5C} = {3AD32396-F574-4E68-94DE-1B71C40E0F47}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {5CF70C3C-099D-493A-9C18-6A80D837EF3E}

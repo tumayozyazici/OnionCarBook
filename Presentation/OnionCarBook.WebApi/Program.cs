@@ -6,10 +6,12 @@ using OnionCarBook.Application.Features.CQRS.Handlers.CarHandlers;
 using OnionCarBook.Application.Features.CQRS.Handlers.CategoryHandlers;
 using OnionCarBook.Application.Features.CQRS.Handlers.ContactHandlers;
 using OnionCarBook.Application.Interfaces;
+using OnionCarBook.Application.Interfaces.BlogInterfaces;
 using OnionCarBook.Application.Interfaces.CarInterfaces;
 using OnionCarBook.Application.Services;
 using OnionCarBook.Persistence.Context;
 using OnionCarBook.Persistence.Repositories;
+using OnionCarBook.Persistence.Repositories.BlogRepositories;
 using OnionCarBook.Persistence.Repositories.CarRepositories;
 
 namespace OnionCarBook.WebApi
@@ -28,6 +30,7 @@ namespace OnionCarBook.WebApi
             //Repository
             builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
             builder.Services.AddScoped(typeof(ICarRepository),typeof(CarRepository));
+            builder.Services.AddScoped(typeof(IBlogRepository),typeof(BlogRepository));
 
             //Abouts
             builder.Services.AddScoped<GetAboutQueryHandler>();
@@ -57,6 +60,7 @@ namespace OnionCarBook.WebApi
             builder.Services.AddScoped<UpdateCarCommandHandler>();
             builder.Services.AddScoped<RemoveCarCommandHandler>();
             builder.Services.AddScoped<GetCarWithBrandQueryHandler>();
+            builder.Services.AddScoped<GetLast5CarsWithBrandsQueryHandler>();
 
             //Categories
             builder.Services.AddScoped<GetCategoryQueryHandler>();
