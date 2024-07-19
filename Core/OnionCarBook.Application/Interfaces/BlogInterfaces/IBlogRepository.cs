@@ -10,5 +10,7 @@ namespace OnionCarBook.Application.Interfaces.BlogInterfaces
     public interface IBlogRepository
     {
         List<Blog> GetLast3BlogsWithAuthors();
+        List<Blog> GetAllBlogsWithAuthros();
+        List<Blog> GetBlogsByAuthorId(int id);
     }
 }

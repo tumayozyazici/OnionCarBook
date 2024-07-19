@@ -27,7 +27,7 @@ namespace OnionCarBook.Application.Features.Mediator.Handlers.BlogHandlers
                 CoverImageUrl = request.CoverImageUrl,
                 CreatedDate = request.CreatedDate,
                 AuthorID = request.AuthorID,
-                CategoryID = request.CategoryID,
+                CategoryID = request.CategoryID
             });
         }
     }

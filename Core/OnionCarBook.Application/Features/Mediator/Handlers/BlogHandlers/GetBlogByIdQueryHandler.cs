@@ -31,6 +31,7 @@ namespace OnionCarBook.Application.Features.Mediator.Handlers.BlogHandlers
                 CreatedDate = DateTime.Now,
                 AuthorID = value.AuthorID,
                 CategoryID = value.CategoryID,
+                Description = value.Description
             };
         }
     }

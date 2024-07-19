@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace OnionCarBook.Persistence.Repositories.CarRepositories
 {
-    public class CarRepository : ICarRepository
+	public class CarRepository : ICarRepository
     {
         private readonly CarBookContext _context;
 
@@ -26,7 +26,7 @@ namespace OnionCarBook.Persistence.Repositories.CarRepositories
             return values;
         }
 
-        public List<Car> GetLast5CarsWithBrands()
+		public List<Car> GetLast5CarsWithBrands()
         {
             var values = _context.Cars.Include(x=>x.Brand).OrderByDescending(x=>x.CarID).Take(5).ToList();
             return values;

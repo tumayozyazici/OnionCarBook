@@ -18,18 +18,18 @@ namespace OnionCarBook.WebApi.Controllers
         private readonly GetCarWithBrandQueryHandler _getCarWithBrandQueryHandler;
         private readonly GetLast5CarsWithBrandsQueryHandler _getLast5CarsWithBrandsQueryHandler;
 
-        public CarsController(CreateCarCommandHandler createCarCommandHandler, GetCarByIdQueryHandler getCarByIdQueryHandler, GetCarQueryHandler getCarQueryHandler, UpdateCarCommandHandler updateCarCommandHandler, RemoveCarCommandHandler removeCarCommandHandler, GetCarWithBrandQueryHandler getCarWithBrandQueryHandler, GetLast5CarsWithBrandsQueryHandler getLast5CarsWithBrandsQueryHandler)
-        {
-            _createCarCommandHandler = createCarCommandHandler;
-            _getCarByIdQueryHandler = getCarByIdQueryHandler;
-            _getCarQueryHandler = getCarQueryHandler;
-            _updateCarCommandHandler = updateCarCommandHandler;
-            _removeCarCommandHandler = removeCarCommandHandler;
-            _getCarWithBrandQueryHandler = getCarWithBrandQueryHandler;
-            _getLast5CarsWithBrandsQueryHandler = getLast5CarsWithBrandsQueryHandler;
-        }
+		public CarsController(CreateCarCommandHandler createCarCommandHandler, GetCarByIdQueryHandler getCarByIdQueryHandler, GetCarQueryHandler getCarQueryHandler, UpdateCarCommandHandler updateCarCommandHandler, RemoveCarCommandHandler removeCarCommandHandler, GetCarWithBrandQueryHandler getCarWithBrandQueryHandler, GetLast5CarsWithBrandsQueryHandler getLast5CarsWithBrandsQueryHandler)
+		{
+			_createCarCommandHandler = createCarCommandHandler;
+			_getCarByIdQueryHandler = getCarByIdQueryHandler;
+			_getCarQueryHandler = getCarQueryHandler;
+			_updateCarCommandHandler = updateCarCommandHandler;
+			_removeCarCommandHandler = removeCarCommandHandler;
+			_getCarWithBrandQueryHandler = getCarWithBrandQueryHandler;
+			_getLast5CarsWithBrandsQueryHandler = getLast5CarsWithBrandsQueryHandler;
+		}
 
-        [HttpGet]
+		[HttpGet]
         public async Task<IActionResult> CarList()
         {
             var values = await _getCarQueryHandler.Handle();
@@ -77,5 +77,5 @@ namespace OnionCarBook.WebApi.Controllers
             var values = _getLast5CarsWithBrandsQueryHandler.Handle();
             return Ok(values);
         }
-    }
+	}
 }

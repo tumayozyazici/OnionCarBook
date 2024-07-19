@@ -1,7 +1,5 @@
 ﻿using MediatR;
 using OnionCarBook.Application.Features.Mediator.Queries.SocialMediaQueries;
-using OnionCarBook.Application.Features.Mediator.Queries.SocialMediaQueries;
-using OnionCarBook.Application.Features.Mediator.Results.SocialMediaResults;
 using OnionCarBook.Application.Features.Mediator.Results.SocialMediaResults;
 using OnionCarBook.Application.Interfaces;
 using OnionCarBook.Domain.Entities;

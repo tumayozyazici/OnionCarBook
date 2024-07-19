@@ -20,6 +20,21 @@ namespace OnionCarBook.Persistence.Repositories.BlogRepositories
             _context = context;
         }
 
+		public List<Blog> GetAllBlogsWithAuthros()
+		{
+			return _context.Blogs.Include(y=>y.Author).ToList();
+		}
+
+        /// <summary>
+        /// Aslında bu methodun AuthorRepositoryde açılması lazımdı o sebeple hatalı isimlendirme var bunda düşmen guzuuum.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public List<Blog> GetBlogsByAuthorId(int id)
+        {
+            return _context.Blogs.Include(x=>x.Author).Where(y=>y.BlogID==id).ToList();
+        }
+
         public List<Blog> GetLast3BlogsWithAuthors()
         {
             return _context.Blogs.Include(x => x.Author).OrderByDescending(x => x.BlogID).Take(3).ToList();
