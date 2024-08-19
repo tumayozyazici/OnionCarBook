@@ -1,24 +1,26 @@
-﻿@model CreateCarDto
+﻿@model UpdateCarDto
 @{
-    ViewData["Title"] = "CreateCar";
+    ViewData["Title"] = "UpdateCar";
     Layout = "~/Views/AdminLayout/Index.cshtml";
 }
+
 <div class="page-content">
     <div class="container-fluid">
         <div class="row">
             <div class="col-xl-12">
                 <div class="card">
                     <div class="card-body">
-                        <h4 class="card-title">Yeni Araç Girişi</h4>
-                        <p class="card-subtitle mb-4">Araç ile ilgili temel bilgileri eksiksiz doldurmanız önemlidir. Veri girişlerinden sonra kaydet butonuna tıklayarak işlemi tamamlayabilirsiniz.</p>
+                        <h4 class="card-title">Araç Güncelleme Sayfası</h4>
+                        <p class="card-subtitle mb-4">Araç ile ilgili temel bilgileri eksiksiz doldurmanız önemlidir. Veri girişlerinden sonra kaydet butonuna tıklayarak güncelleme işlemini tamamlayabilirsiniz.</p>
                         <form method="post">
+                            <input type="hidden" asp-for="CarID" />
                             <div class="form-group">
                                 <label for="exampleInputBrand">Marka</label>
-                                @Html.DropDownListFor(x => x.BrandID, (List<SelectListItem>)ViewBag.BrandValues,new {@class="form-control"})
+                                @Html.DropDownListFor(x => x.BrandID, (List<SelectListItem>)ViewBag.BrandValues, new { @class = "form-control" })
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputModel">Model</label>
-                                <input type="text" class="form-control" id="exampleInputModel" asp-for ="Model" placeholder="Model girişi yapınız.">
+                                <input type="text" class="form-control" id="exampleInputModel" asp-for="Model" placeholder="Model girişi yapınız.">
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputCoverImageUrl">Kapak Fotoğrafı</label>
@@ -48,7 +50,7 @@
                                 <label for="exampleInputBigImageUrl">Büyük Kapak Fotoğrafı</label>
                                 <input type="text" class="form-control" id="exampleInputBigImageUrl" asp-for="BigImageUrl" placeholder="Araç detayında gözükecek kapak fotoğrafı linkini giriniz.">
                             </div>
-                            <button type="submit" class="btn btn-primary waves-effect waves-light">Aracı Ekle</button>
+                            <button type="submit" class="btn btn-primary waves-effect waves-light">Aracı Güncelle</button>
                         </form>
                     </div>
                 </div>
@@ -56,4 +58,6 @@
         </div>
     </div>
 </div>
+
+
 

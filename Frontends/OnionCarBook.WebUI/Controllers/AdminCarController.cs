@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.VisualStudio.Web.CodeGenerators.Mvc.Templates.Blazor;
 using Newtonsoft.Json;
 using OnionCarBook.Dto.BrandDtos;
 using OnionCarBook.Dto.CarDtos;
@@ -62,6 +63,60 @@ namespace OnionCarBook.WebUI.Controllers
                 return RedirectToAction(nameof(Index));
             }
             return View();
+        }
+
+        public async Task<IActionResult> RemoveCar(int id)
+        {
+            var client = _httpClientFactory.CreateClient();
+            var responseMessage = await client.DeleteAsync($"https://localhost:7126/api/Cars/{id}");
+            if (responseMessage.IsSuccessStatusCode) 
+            {
+                return RedirectToAction(nameof(Index));
+            }
+            return View();
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> UpdateCar(int id)
+        {
+            var client = _httpClientFactory.CreateClient();
+            var responseMessage1 = await client.GetAsync("https://localhost:7126/api/Brands");
+            if (responseMessage1.IsSuccessStatusCode)
+            {
+                var jsonData1 = await responseMessage1.Content.ReadAsStringAsync();
+                var values1 = JsonConvert.DeserializeObject<List<ResultBrandDto>>(jsonData1);
+                List<SelectListItem> brandValues = (from x in values1
+                                                    select new SelectListItem
+                                                    {
+                                                        Text = x.name,
+                                                        Value = x.brandID.ToString()
+                                                    }).ToList();
+                ViewBag.BrandValues = brandValues;
+            }
+
+            var responseMessage = await client.GetAsync($"https://localhost:7126/api/Cars/{id}");
+            if (responseMessage.IsSuccessStatusCode) 
+            {
+                var jsonData = await responseMessage.Content.ReadAsStringAsync();
+                var values = JsonConvert.DeserializeObject<UpdateCarDto>(jsonData);
+                return View(values);
+            }
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> UpdateCar(UpdateCarDto updateCarDto)
+        {
+            var client = _httpClientFactory.CreateClient();
+            var jsonData = JsonConvert.SerializeObject(updateCarDto);
+
+            StringContent stringContent = new StringContent(jsonData, Encoding.UTF8,"application/json");
+            var responseMessage = await client.PutAsync("https://localhost:7126/api/Cars",stringContent);
+            if (responseMessage.IsSuccessStatusCode) 
+            {
+                return RedirectToAction(nameof(Index));
+            }
+            return View(updateCarDto);
         }
     }
 }
