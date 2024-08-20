@@ -1,0 +1,40 @@
+﻿@model CreateAboutDto
+@{
+    ViewData["Title"] = "CreateAbout";
+    Layout = "~/Views/AdminLayout/Index.cshtml";
+}
+
+<div class="page-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Yeni Hakkımızda Girişi</h4>
+                        <p class="card-subtitle mb-4">Hakkımızda bilgilerini aşağıdaki panelden girebilirsiniz. Veri girişinden sonra ekle butonuna tıklayarak işlemi tamamlayabilirsiniz. Tasarımda bozulma olmaması adına yeni bir hakkımızda girişi yaptıktan sonra önceki hakkımızda alanını silin, sadece bir adet hakkımızda verisi kalmalıdır.</p>
+                        <form method="post">
+                            <div class="form-group">
+                                <label for="exampleInputTitle">Başlık Adı</label>
+                                <input type="text" class="form-control" id="exampleInputTitle" asp-for="title" placeholder="Başlık giriniz.">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputDescription">Açıklama</label>
+                                <textarea style ="resize:none" rows="5" class="form-control" id="exampleInputDescription" asp-for="description" placeholder="Açıklama giriniz."></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputImageUrl">Image URL</label>
+                                <input type="text" class="form-control" id="exampleInputImageUrl" asp-for="imgUrl" placeholder="Image linkini giriniz.">
+                            </div>
+                            <button type="submit" class="btn btn-primary waves-effect waves-light">Hakkımızda Ekle</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
