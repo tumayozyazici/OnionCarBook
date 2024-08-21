@@ -50,5 +50,12 @@ namespace OnionCarBook.WebApi.Controllers
             _commentRepository.Remove(id);
             return Ok("Yorum başarıyla silindi");
         }
+
+        [HttpGet("GetCommentsByBlogID")]
+        public IActionResult GetCommentsByBlogID(int id)
+        {
+            var values = _commentRepository.GetCommentsByBlogId(id);
+            return Ok(values);
+        }
     }
 }

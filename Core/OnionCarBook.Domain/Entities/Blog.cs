@@ -13,12 +13,12 @@ namespace OnionCarBook.Domain.Entities
         public string CoverImageUrl { get; set; }
         public DateTime CreatedDate { get; set; }
         public string Description { get; set; }
+        public int CategoryID { get; set; }
+        public int AuthorID { get; set; }
 
 
         //Navigation Props
-        public int AuthorID { get; set; }
         public Author Author { get; set; }
-        public int CategoryID { get; set; }
         public Category Category { get; set; }
         public List<TagCloud> TagClouds { get; set; }
         public List<Comment> Comments { get; set; }

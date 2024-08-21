@@ -96,5 +96,4 @@ namespace OnionCarBook.WebUI.Areas.Admin.Controllers
             return View(updateAuthorDto);
         }
     }
-
 }
