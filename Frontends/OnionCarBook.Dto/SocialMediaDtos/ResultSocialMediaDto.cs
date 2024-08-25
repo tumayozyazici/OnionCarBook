@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace OnionCarBook.Domain.Entities
+namespace OnionCarBook.Dto.SocialMediaDtos
 {
-    public class SocialMedia
+    public class ResultSocialMediaDto
     {
         public int SocialMediaID { get; set; }
         public string Name { get; set; }

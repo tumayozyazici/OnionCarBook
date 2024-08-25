@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace OnionCarBook.Dto.FooterAdressDtos
 {
-    public class ResultFooterAdressDto
+    public class CreateFooterAdressDto
     {
-        public int FooterAdressID { get; set; }
         public string Description { get; set; }
         public string Adress { get; set; }
         public string PhoneNumber { get; set; }

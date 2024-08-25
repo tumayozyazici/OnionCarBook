@@ -4,11 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace OnionCarBook.Domain.Entities
+namespace OnionCarBook.Dto.LocationDtos
 {
-    public class Location
+    public class CreateLocationDto
     {
-        public int LocationID { get; set; }
         public string Name { get; set; }
     }
 }

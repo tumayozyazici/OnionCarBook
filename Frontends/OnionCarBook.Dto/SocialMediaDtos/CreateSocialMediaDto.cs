@@ -4,11 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace OnionCarBook.Domain.Entities
+namespace OnionCarBook.Dto.SocialMediaDtos
 {
-    public class Location
+    public class CreateSocialMediaDto
     {
-        public int LocationID { get; set; }
         public string Name { get; set; }
+        public string Url { get; set; }
+        public string Icon { get; set; }
     }
 }
