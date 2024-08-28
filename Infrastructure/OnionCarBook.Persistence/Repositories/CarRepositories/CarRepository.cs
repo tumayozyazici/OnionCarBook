@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace OnionCarBook.Persistence.Repositories.CarRepositories
 {
-	public class CarRepository : ICarRepository
+    public class CarRepository : ICarRepository
     {
         private readonly CarBookContext _context;
 

@@ -1,8 +1,10 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using MediatR;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using OnionCarBook.Application.Features.CQRS.Commands.CarCommands;
 using OnionCarBook.Application.Features.CQRS.Handlers.CarHandlers;
 using OnionCarBook.Application.Features.CQRS.Queries.CarQueries;
+using OnionCarBook.Application.Features.Mediator.Queries.StatisticsQueries;
 
 namespace OnionCarBook.WebApi.Controllers
 {
@@ -77,5 +79,5 @@ namespace OnionCarBook.WebApi.Controllers
             var values = _getLast5CarsWithBrandsQueryHandler.Handle();
             return Ok(values);
         }
-	}
+    }
 }
