@@ -86,6 +86,7 @@ namespace OnionCarBook.WebUI.Areas.Admin.Controllers
             }
             return null;
         }
+
         private async Task<ResultStatisticNameDto> GetName(string apiUrl)
         {
             var client = _httpClientFactory.CreateClient();

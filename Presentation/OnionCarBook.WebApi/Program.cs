@@ -11,6 +11,7 @@ using OnionCarBook.Application.Interfaces;
 using OnionCarBook.Application.Interfaces.BlogInterfaces;
 using OnionCarBook.Application.Interfaces.CarInterfaces;
 using OnionCarBook.Application.Interfaces.CarPricingInterfaces;
+using OnionCarBook.Application.Interfaces.RentACarInterfaces;
 using OnionCarBook.Application.Interfaces.StatisticInterfaces;
 using OnionCarBook.Application.Interfaces.TagCloudInterfaces;
 using OnionCarBook.Application.Services;
@@ -20,6 +21,7 @@ using OnionCarBook.Persistence.Repositories.BlogRepositories;
 using OnionCarBook.Persistence.Repositories.CarPricingRepositories;
 using OnionCarBook.Persistence.Repositories.CarRepositories;
 using OnionCarBook.Persistence.Repositories.CommentRepositories;
+using OnionCarBook.Persistence.Repositories.RentACarRepositories;
 using OnionCarBook.Persistence.Repositories.StatisticRepositories;
 using OnionCarBook.Persistence.Repositories.TagCloudRepositories;
 
@@ -40,6 +42,7 @@ namespace OnionCarBook.WebApi
             builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
             builder.Services.AddScoped(typeof(ICarRepository),typeof(CarRepository));
             builder.Services.AddScoped(typeof(IStatisticRepository),typeof(StatisticRepository));
+            builder.Services.AddScoped(typeof(IRentACarRepository),typeof(RentACarRepository));
             builder.Services.AddScoped(typeof(IBlogRepository),typeof(BlogRepository));
             builder.Services.AddScoped(typeof(ITagCloudRepository),typeof(TagCloudRepository));
             builder.Services.AddScoped(typeof(ICarPricingRepository),typeof(CarPricingRepository));

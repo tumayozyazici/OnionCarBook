@@ -13,5 +13,6 @@ namespace OnionCarBook.Application.Features.Mediator.Results.CarPricingResults
         public string Model { get; set; }
         public decimal Amount { get; set; }
         public string CoverImageUrl { get; set; }
+        public int CarID { get; set; }
     }
 }
