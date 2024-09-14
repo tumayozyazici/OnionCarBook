@@ -14,5 +14,6 @@ namespace OnionCarBook.Application.Features.RepositoryPattern
         void Remove(int id);
         T GetById(int id);
         List<T> GetCommentsByBlogId(int id);
+        int GetCommentCountByBlogId(int id);
     }
 }

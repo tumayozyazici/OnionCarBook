@@ -32,7 +32,7 @@ namespace OnionCarBook.Persistence.Repositories.CarPricingRepositories
 			List<CarPricingInterfaceDto> values = new List<CarPricingInterfaceDto>();
 			using(var command = _context.Database.GetDbConnection().CreateCommand())
 			{
-				command.CommandText = "Select * From (Select CoverImageUrl, Model, CarPricings.CarID, PricingID, Amount From CarPricings Inner Join Cars On Cars.CarID=CarPricings.CarID Inner Join Brands On Brands.BrandID = Cars.BrandID) As SourceTable Pivot (Sum(Amount) For PricingID In ([1],[2],[3])) as PivotTable;";
+				command.CommandText = "Select * From (Select CoverImageUrl, Name, Model, CarPricings.CarID, PricingID, Amount From CarPricings Inner Join Cars On Cars.CarID=CarPricings.CarID Inner Join Brands On Brands.BrandID = Cars.BrandID) As SourceTable Pivot (Sum(Amount) For PricingID In ([1],[2],[3])) as PivotTable;";
 				command.CommandType = System.Data.CommandType.Text;
 				_context.Database.OpenConnection();
 				using (var reader = command.ExecuteReader())
@@ -41,14 +41,15 @@ namespace OnionCarBook.Persistence.Repositories.CarPricingRepositories
 					{
 						CarPricingInterfaceDto carPricing = new CarPricingInterfaceDto()
 						{
+							Brand = reader["Name"].ToString(),
 							Model = reader["Model"].ToString(),
 							CoverImageUrl= reader["CoverImageUrl"].ToString(),
-							CarID= Convert.ToInt32(reader[2]),
+							CarID= Convert.ToInt32(reader[3]),
 							Amounts = new List<decimal>
 							{
-								Convert.ToDecimal(reader[3]),
 								Convert.ToDecimal(reader[4]),
 								Convert.ToDecimal(reader[5]),
+								Convert.ToDecimal(reader[6]),
 							}
 						};
 						values.Add(carPricing);

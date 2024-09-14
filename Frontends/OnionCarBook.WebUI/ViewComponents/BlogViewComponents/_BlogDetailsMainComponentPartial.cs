@@ -16,6 +16,14 @@ namespace OnionCarBook.WebUI.ViewComponents.BlogViewComponents
         public async Task<IViewComponentResult> InvokeAsync(int id)
         {
             var client = _httpClientFactory.CreateClient();
+            var responseMessage1 = await client.GetAsync($"https://localhost:7126/api/Comments/GetCommentCountByBlogID?id={id}");
+            if (responseMessage1.IsSuccessStatusCode)
+            {
+                var jsonData = await responseMessage1.Content.ReadAsStringAsync();
+                var values = JsonConvert.DeserializeObject<int>(jsonData);
+                ViewBag.CommentCount = values;
+            }
+
             var responseMessage = await client.GetAsync($"https://localhost:7126/api/Blogs/{id}");
             if (responseMessage.IsSuccessStatusCode)
             {

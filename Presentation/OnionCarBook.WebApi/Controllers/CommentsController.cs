@@ -1,5 +1,7 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using MediatR;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using OnionCarBook.Application.Features.Mediator.Commands.CommentCommands;
 using OnionCarBook.Application.Features.RepositoryPattern;
 using OnionCarBook.Domain.Entities;
 
@@ -10,10 +12,12 @@ namespace OnionCarBook.WebApi.Controllers
     public class CommentsController : ControllerBase
     {
         private readonly IGenericRepository<Comment> _commentRepository;
+        private readonly IMediator _mediator;
 
-        public CommentsController(IGenericRepository<Comment> commentRepository)
+        public CommentsController(IGenericRepository<Comment> commentRepository, IMediator mediator)
         {
             _commentRepository = commentRepository;
+            _mediator = mediator;
         }
 
         [HttpGet("CommentList")]
@@ -37,6 +41,13 @@ namespace OnionCarBook.WebApi.Controllers
             return Ok("Yorum başarıyla eklendi");
         }
 
+        [HttpPost("CreateCommentWithMediator")]
+        public async Task<IActionResult> CreateCommentWithMediator(CreateCommentCommand createCommentCommand)
+        {
+            await _mediator.Send(createCommentCommand);
+            return Ok("Yorum başarıyla eklendi");
+        }
+
         [HttpPut("UpdateComment")]
         public IActionResult UpdateComment(Comment comment)
         {
@@ -55,6 +66,13 @@ namespace OnionCarBook.WebApi.Controllers
         public IActionResult GetCommentsByBlogID(int id)
         {
             var values = _commentRepository.GetCommentsByBlogId(id);
+            return Ok(values);
+        }
+
+        [HttpGet("GetCommentCountByBlogID")]
+        public IActionResult GetCommentCountByBlogID(int id)
+        {
+            var values = _commentRepository.GetCommentCountByBlogId(id);
             return Ok(values);
         }
     }

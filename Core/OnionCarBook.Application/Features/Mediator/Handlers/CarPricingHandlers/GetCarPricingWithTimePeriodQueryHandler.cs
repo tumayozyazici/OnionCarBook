@@ -24,6 +24,7 @@ namespace OnionCarBook.Application.Features.Mediator.Handlers.CarPricingHandlers
 			var values = _carPricingRepository.GetCarPricingWithTimePeriod();
 			return values.Select(x => new GetCarPricingWithTimePeriodQueryResult
 			{
+				Brand=x.Brand,
 				Model = x.Model,
 				CoverImageUrl = x.CoverImageUrl,
 				CarID = x.CarID,
