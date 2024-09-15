@@ -1,4 +1,5 @@
 
+using FluentValidation.AspNetCore;
 using OnionCarBook.Application.Features.CQRS.Handlers.AboutHandlers;
 using OnionCarBook.Application.Features.CQRS.Handlers.BannerHandlers;
 using OnionCarBook.Application.Features.CQRS.Handlers.BrandHandlers;
@@ -9,23 +10,28 @@ using OnionCarBook.Application.Features.CQRS.Results.CarResults;
 using OnionCarBook.Application.Features.RepositoryPattern;
 using OnionCarBook.Application.Interfaces;
 using OnionCarBook.Application.Interfaces.BlogInterfaces;
+using OnionCarBook.Application.Interfaces.CarDescriptionInterfaces;
 using OnionCarBook.Application.Interfaces.CarFeatureInterfaces;
 using OnionCarBook.Application.Interfaces.CarInterfaces;
 using OnionCarBook.Application.Interfaces.CarPricingInterfaces;
 using OnionCarBook.Application.Interfaces.RentACarInterfaces;
+using OnionCarBook.Application.Interfaces.ReviewInterfaces;
 using OnionCarBook.Application.Interfaces.StatisticInterfaces;
 using OnionCarBook.Application.Interfaces.TagCloudInterfaces;
 using OnionCarBook.Application.Services;
 using OnionCarBook.Persistence.Context;
 using OnionCarBook.Persistence.Repositories;
 using OnionCarBook.Persistence.Repositories.BlogRepositories;
+using OnionCarBook.Persistence.Repositories.CarDescriptionRepositories;
 using OnionCarBook.Persistence.Repositories.CarFeatureRepositories;
 using OnionCarBook.Persistence.Repositories.CarPricingRepositories;
 using OnionCarBook.Persistence.Repositories.CarRepositories;
 using OnionCarBook.Persistence.Repositories.CommentRepositories;
 using OnionCarBook.Persistence.Repositories.RentACarRepositories;
+using OnionCarBook.Persistence.Repositories.ReviewRepository;
 using OnionCarBook.Persistence.Repositories.StatisticRepositories;
 using OnionCarBook.Persistence.Repositories.TagCloudRepositories;
+using System.Reflection;
 
 namespace OnionCarBook.WebApi
 {
@@ -45,6 +51,8 @@ namespace OnionCarBook.WebApi
             builder.Services.AddScoped(typeof(ICarRepository),typeof(CarRepository));
             builder.Services.AddScoped(typeof(ICarFeatureRepository),typeof(CarFeatureRepository));
             builder.Services.AddScoped(typeof(IStatisticRepository),typeof(StatisticRepository));
+            builder.Services.AddScoped(typeof(ICarDescriptionRepository),typeof(CarDescriptionRepository));
+            builder.Services.AddScoped(typeof(IReviewRepository),typeof(ReviewRepository));
             builder.Services.AddScoped(typeof(IRentACarRepository),typeof(RentACarRepository));
             builder.Services.AddScoped(typeof(IBlogRepository),typeof(BlogRepository));
             builder.Services.AddScoped(typeof(ITagCloudRepository),typeof(TagCloudRepository));
@@ -98,6 +106,11 @@ namespace OnionCarBook.WebApi
             //MediatR
             builder.Services.AddApplicationService(builder.Configuration);
 
+            //Fluent Validation
+            builder.Services.AddControllers().AddFluentValidation(x =>
+            {
+                x.RegisterValidatorsFromAssembly(Assembly.GetExecutingAssembly());
+            });
 
             builder.Services.AddControllers();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

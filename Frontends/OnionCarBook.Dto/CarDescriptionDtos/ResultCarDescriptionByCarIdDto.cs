@@ -4,16 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace OnionCarBook.Domain.Entities
+namespace OnionCarBook.Dto.CarDescriptionDtos
 {
-    public class CarDescription
+    public class ResultCarDescriptionByCarIdDto
     {
         public int CarDescriptionID { get; set; }
-        public string Details { get; set; }
-
-
-        //Nav Props
         public int CarID { get; set; }
-        public Car Car { get; set; }
+        public string Details { get; set; }
     }
 }
