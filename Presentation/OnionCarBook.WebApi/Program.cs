@@ -1,5 +1,6 @@
-
 using FluentValidation.AspNetCore;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
 using OnionCarBook.Application.Features.CQRS.Handlers.AboutHandlers;
 using OnionCarBook.Application.Features.CQRS.Handlers.BannerHandlers;
 using OnionCarBook.Application.Features.CQRS.Handlers.BrandHandlers;
@@ -19,6 +20,7 @@ using OnionCarBook.Application.Interfaces.ReviewInterfaces;
 using OnionCarBook.Application.Interfaces.StatisticInterfaces;
 using OnionCarBook.Application.Interfaces.TagCloudInterfaces;
 using OnionCarBook.Application.Services;
+using OnionCarBook.Application.Tools;
 using OnionCarBook.Persistence.Context;
 using OnionCarBook.Persistence.Repositories;
 using OnionCarBook.Persistence.Repositories.BlogRepositories;
@@ -32,6 +34,7 @@ using OnionCarBook.Persistence.Repositories.ReviewRepository;
 using OnionCarBook.Persistence.Repositories.StatisticRepositories;
 using OnionCarBook.Persistence.Repositories.TagCloudRepositories;
 using System.Reflection;
+using System.Text;
 
 namespace OnionCarBook.WebApi
 {
@@ -41,7 +44,20 @@ namespace OnionCarBook.WebApi
         {
             var builder = WebApplication.CreateBuilder(args);
 
-            // Add services to the container.
+            //JWT
+            builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(opt =>
+            {
+                opt.RequireHttpsMetadata = false;
+                opt.TokenValidationParameters = new TokenValidationParameters
+                {
+                    ValidAudience = JwtDefaults.ValidAuidience,
+                    ValidIssuer = JwtDefaults.ValidIssuer,
+                    ClockSkew = TimeSpan.Zero,
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(JwtDefaults.Key)),
+                    ValidateLifetime = true,
+                    ValidateIssuerSigningKey = true
+                };
+            });
 
             //Context
             builder.Services.AddScoped<CarBookContext>();
@@ -127,9 +143,8 @@ namespace OnionCarBook.WebApi
             }
 
             app.UseHttpsRedirection();
-
+            app.UseAuthentication();
             app.UseAuthorization();
-
 
             app.MapControllers();
 
