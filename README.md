@@ -1,9 +1,5 @@
 # CarBook - Araç Kiralama Sitesi
 
-CarBook is a car rental system that allows users to view and book available vehicles based on their location. This project leverages modern technologies and architectural patterns to provide a robust and scalable solution.
-
-## Proje Tanımı
-
 Kullanıcılar, alacakları lokasyona göre uygun araçları listeleyebilir ve istedikleri araca ön kayıt oluşturarak aracı kiralayabilirler.
 
 **Teknolojiler:**
