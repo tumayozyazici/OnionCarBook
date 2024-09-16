@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Newtonsoft.Json;
 using OnionCarBook.Dto.LocationDtos;
+using System.Net.Http.Headers;
 
 namespace OnionCarBook.WebUI.Controllers
 {
@@ -17,32 +18,37 @@ namespace OnionCarBook.WebUI.Controllers
         [HttpGet]
         public async Task<IActionResult> Index()
         {
-            var client = _httpClientFactory.CreateClient();
-            var responseMessage = await client.GetAsync("https://localhost:7126/api/Locations/");
-            if (responseMessage.IsSuccessStatusCode)
+            var token = User.Claims.FirstOrDefault(x => x.Type == "accessToken")?.Value;
+            if (token != null)
             {
-                var jsonData = await responseMessage.Content.ReadAsStringAsync();
-                var values = JsonConvert.DeserializeObject<List<ResultLocationDto>>(jsonData);
-                List<SelectListItem> valuesInSelectList = (from x in values
-                                                           select new SelectListItem
-                                                           {
-                                                               Text = x.Name,
-                                                               Value = x.LocationID.ToString()
-                                                           }).ToList();
-                ViewBag.v = valuesInSelectList;
+                var client = _httpClientFactory.CreateClient();
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+                var responseMessage = await client.GetAsync("https://localhost:7126/api/Locations/");
+                if (responseMessage.IsSuccessStatusCode)
+                {
+                    var jsonData = await responseMessage.Content.ReadAsStringAsync();
+                    var values = JsonConvert.DeserializeObject<List<ResultLocationDto>>(jsonData);
+                    List<SelectListItem> valuesInSelectList = (from x in values
+                                                               select new SelectListItem
+                                                               {
+                                                                   Text = x.Name,
+                                                                   Value = x.LocationID.ToString()
+                                                               }).ToList();
+                    ViewBag.v = valuesInSelectList;
+                }
             }
             return View();
         }
 
         [HttpPost]
-        public IActionResult Index(string book_pick_date, string book_off_date,string time_pick, string time_off, string locationID)
+        public IActionResult Index(string book_pick_date, string book_off_date, string time_pick, string time_off, string locationID)
         {
             TempData["bookpickdate"] = book_pick_date;
             TempData["bookoffdate"] = book_off_date;
             TempData["timepick"] = time_pick;
             TempData["timeoff"] = time_off;
             TempData["locationid"] = locationID;
-            return RedirectToAction("Index","RentACarList");
+            return RedirectToAction("Index", "RentACarList");
         }
     }
 }

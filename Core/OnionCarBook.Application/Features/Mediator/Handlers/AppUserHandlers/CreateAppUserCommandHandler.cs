@@ -26,7 +26,10 @@ namespace OnionCarBook.Application.Features.Mediator.Handlers.AppUserHandlers
             {
                 UserName = request.UserName,
                 Password = request.Password,
-                AppRoleId = (int)RoleTypes.Member
+                AppRoleId = (int)RoleTypes.Member,
+                Email = request.Email,
+                FirstName = request.FirstName,
+                SurName = request.SurName
             });
         }
     }
