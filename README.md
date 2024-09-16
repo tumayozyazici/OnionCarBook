@@ -47,7 +47,4 @@ Kullanıcılar, alacakları lokasyona göre uygun araçları listeleyebilir ve i
 
 ## Kurulum
 
-1. **Projeyi Klonlayın:**
-
-   ```bash
-   git clone https://github.com/username/carbook.git
+<img src="(https://github.com/user-attachments/assets/91bdb0e1-77d8-451b-b01c-1d2377eeba8e"/>
