@@ -45,13 +45,12 @@ Kullanıcılar, alacakları lokasyona göre uygun araçları listeleyebilir ve i
 - **SignalR**
 - **LINQ**
 
-
+<img src="https://github.com/user-attachments/assets/7ef69700-dfc2-478c-ba66-745c4632627f"/>
 <img src="https://github.com/user-attachments/assets/071799ab-fc92-4c09-90d2-0ef83144c2e1"/>
 <img src="https://github.com/user-attachments/assets/7960482e-8d02-40a3-9808-4253dab19b9d"/>
 <img src="https://github.com/user-attachments/assets/7a659a9c-7e9f-439d-817d-6bc1992f5c5e"/>
 <img src="https://github.com/user-attachments/assets/9f13ec45-ffc6-410f-b6a1-a1af9a2c102a"/>
 <img src="https://github.com/user-attachments/assets/6b74f88e-0294-4bfb-858e-e1c26d341734"/>
-<img src="https://github.com/user-attachments/assets/7ef69700-dfc2-478c-ba66-745c4632627f"/>
 <img src="https://github.com/user-attachments/assets/bd240d96-b3bf-431f-a581-f3f14ada2214"/>
 <img src="https://github.com/user-attachments/assets/1906a4b2-c83c-46cf-b00f-2cb33effdd2a"/>
 <img src="https://github.com/user-attachments/assets/9721cd76-2a7d-40a2-bc63-ffd88400e161"/>
