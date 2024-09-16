@@ -4,6 +4,7 @@ using Newtonsoft.Json;
 using OnionCarBook.Dto.LocationDtos;
 using OnionCarBook.Dto.ReservationDtos;
 using OnionCarBook.Dto.TestimonialDtos;
+using System.Net.Http.Headers;
 using System.Text;
 
 namespace OnionCarBook.WebUI.Controllers
@@ -24,19 +25,24 @@ namespace OnionCarBook.WebUI.Controllers
             ViewBag.v2 = "Araç Rezervasyon Formu";
             ViewBag.v3 = id;
 
-            var client = _httpClientFactory.CreateClient();
-            var responseMessage = await client.GetAsync("https://localhost:7126/api/Locations/");
-            if (responseMessage.IsSuccessStatusCode)
+            var token = User.Claims.FirstOrDefault(x => x.Type == "accessToken")?.Value;
+            if (token != null)
             {
-                var jsonData = await responseMessage.Content.ReadAsStringAsync();
-                var values = JsonConvert.DeserializeObject<List<ResultLocationDto>>(jsonData);
-                List<SelectListItem> valuesInSelectList = (from x in values
-                                                           select new SelectListItem
-                                                           {
-                                                               Text = x.Name,
-                                                               Value = x.LocationID.ToString()
-                                                           }).ToList();
-                ViewBag.v = valuesInSelectList;
+                var client = _httpClientFactory.CreateClient();
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+                var responseMessage = await client.GetAsync("https://localhost:7126/api/Locations/");
+                if (responseMessage.IsSuccessStatusCode)
+                {
+                    var jsonData = await responseMessage.Content.ReadAsStringAsync();
+                    var values = JsonConvert.DeserializeObject<List<ResultLocationDto>>(jsonData);
+                    List<SelectListItem> valuesInSelectList = (from x in values
+                                                               select new SelectListItem
+                                                               {
+                                                                   Text = x.Name,
+                                                                   Value = x.LocationID.ToString()
+                                                               }).ToList();
+                    ViewBag.v = valuesInSelectList;
+                }
             }
             return View();
         }

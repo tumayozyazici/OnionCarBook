@@ -8,12 +8,11 @@ namespace OnionCarBook.WebUI
         {
             var builder = WebApplication.CreateBuilder(args);
 
+            // Add services to the container.
+            builder.Services.AddControllersWithViews();
 
             //IHttpClientFactory için inject
             builder.Services.AddHttpClient();
-
-            // Add services to the container.
-            builder.Services.AddControllersWithViews();
 
             //Jwt
             builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddCookie(JwtBearerDefaults.AuthenticationScheme, opt =>

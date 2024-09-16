@@ -33,6 +33,7 @@ using OnionCarBook.Persistence.Repositories.RentACarRepositories;
 using OnionCarBook.Persistence.Repositories.ReviewRepository;
 using OnionCarBook.Persistence.Repositories.StatisticRepositories;
 using OnionCarBook.Persistence.Repositories.TagCloudRepositories;
+using OnionCarBook.WebApi.Hubs;
 using System.Reflection;
 using System.Text;
 
@@ -42,7 +43,24 @@ namespace OnionCarBook.WebApi
     {
         public static void Main(string[] args)
         {
+            //Cors
             var builder = WebApplication.CreateBuilder(args);
+
+            builder.Services.AddHttpClient();
+
+            builder.Services.AddCors(opt =>
+            {
+                opt.AddPolicy("CorsPolicy", builder =>
+                {
+                    builder.AllowAnyHeader()
+                    .AllowAnyMethod()
+                    .SetIsOriginAllowed((host) => true)
+                    .AllowCredentials();
+                });
+            });
+
+            //SignalR
+            builder.Services.AddSignalR();
 
             //JWT
             builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(opt =>
@@ -141,12 +159,13 @@ namespace OnionCarBook.WebApi
                 app.UseSwagger();
                 app.UseSwaggerUI();
             }
-
+            app.UseCors("CorsPolicy");
             app.UseHttpsRedirection();
             app.UseAuthentication();
             app.UseAuthorization();
 
             app.MapControllers();
+            app.MapHub<CarHub>("/CarHub");
 
             app.Run();
         }
