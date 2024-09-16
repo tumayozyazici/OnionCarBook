@@ -46,8 +46,7 @@ Kullanıcılar, alacakları lokasyona göre uygun araçları listeleyebilir ve i
 - **LINQ**
 
 
-<img src="https://github.com/user-attachments/assets/91bdb0e1-77d8-451b-b01c-1d2377eeba8e"/>
-![1726496254634](https://github.com/user-attachments/assets/071799ab-fc92-4c09-90d2-0ef83144c2e1)
+<img src="[https://github.com/user-attachments/assets/91bdb0e1-77d8-451b-b01c-1d2377eeba8e](https://github.com/user-attachments/assets/071799ab-fc92-4c09-90d2-0ef83144c2e1)"/>
 ![1726496254674](https://github.com/user-attachments/assets/7960482e-8d02-40a3-9808-4253dab19b9d)
 ![1726496254959](https://github.com/user-attachments/assets/7a659a9c-7e9f-439d-817d-6bc1992f5c5e)
 ![1726496255083](https://github.com/user-attachments/assets/9f13ec45-ffc6-410f-b6a1-a1af9a2c102a)
