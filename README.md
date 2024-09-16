@@ -7,10 +7,10 @@ CarBook is a car rental system that allows users to view and book available vehi
 Kullanıcılar, alacakları lokasyona göre uygun araçları listeleyebilir ve istedikleri araca ön kayıt oluşturarak aracı kiralayabilirler.
 
 **Teknolojiler:**
-- **ASP.NET Core 8.0**: Web API ve MVC kullanılarak geliştirilmiştir.
-- **Entity Framework Code First**: Dinamik veritabanı yönetimi için kullanılmıştır.
-- **Onion Architecture**: Projenin modüler ve sürdürülebilir olmasını sağlar.
-- **CQRS, Mediator, Repository Design Patterns**: Kodun organizasyonunu ve sürdürülebilirliğini artırmak için uygulanmıştır.
+- **ASP.NET Core 8.0**
+- **Entity Framework Code First**
+- **Onion Architecture**
+- **CQRS, Mediator, Repository Design Patterns**
 
 ## Kullanılan Teknolojiler
 
@@ -28,7 +28,6 @@ Kullanıcılar, alacakları lokasyona göre uygun araçları listeleyebilir ve i
 - **MSSQL**
 - **SignalR**
 - **Json Web Token (JWT)**
-- **MailKit**
 - **FluentValidation**
 
 ## Özellikler
@@ -39,17 +38,16 @@ Kullanıcılar, alacakları lokasyona göre uygun araçları listeleyebilir ve i
 - **Admin Panel**: Yöneticiler için özel bir panel.
 - **Canlı Veri Takibi**: SignalR ile canlı veri güncellemeleri.
 - **Güvenlik**: Json Web Token ile güvenli kimlik doğrulama.
-- **İstatistikler**: Araç ve kullanıcı istatistikleri.
-- **Mail Gönderme**: MailKit kullanarak kullanıcılarla iletişim.
+- **İstatistikler**
 - **Validation Kontrolleri**: FluentValidation ile form doğrulama.
 
 ## Teknik Özellikler
 
-- **MSSQL Veritabanı**: Veritabanı yönetimi için kullanılmıştır.
-- **Onion Mimari**: Projenin modülerliğini sağlar.
-- **CQRS, Mediator, Repository Design Patterns**: Kodun yönetimini ve sürdürülebilirliğini artırır.
-- **SignalR**: Canlı veri akışı sağlar.
-- **LINQ**: Entity Framework Code First ile veritabanı sorguları.
+- **MSSQL Veritabanı**
+- **Onion Mimari**
+- **CQRS, Mediator, Repository Design Patterns**
+- **SignalR**
+- **LINQ**
 
 ## Kurulum
 
