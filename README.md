@@ -45,6 +45,5 @@ Kullanıcılar, alacakları lokasyona göre uygun araçları listeleyebilir ve i
 - **SignalR**
 - **LINQ**
 
-## Kurulum
 
-<img src="(https://github.com/user-attachments/assets/91bdb0e1-77d8-451b-b01c-1d2377eeba8e"/>
+<img src="https://github.com/user-attachments/assets/91bdb0e1-77d8-451b-b01c-1d2377eeba8e"/>
